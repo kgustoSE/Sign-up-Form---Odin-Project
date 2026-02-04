@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Liquid Gold - Java House</title>
+    <title>Java House</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cardo:wght@400;700&display=swap" rel="stylesheet">
@@ -20,18 +20,71 @@
         <div class="footer">Photo by <a href="https://unsplash.com/@subagjav" target="_blank" rel="noopener noreferrer">Rizky Subagja</a> on <a href="https://unsplash.com/" target="_blank" rel="noopener noreferrer">Unsplash</a></div>
       </div>
       <div class="right">
-        <div class="description-section">placeholder3
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Facere, aliquid recusandae! Exercitationem reiciendis velit, consequatur asperiores quasi labore suscipit eligendi aspernatur molestias illo magni fugiat a blanditiis fuga adipisci ullam.</p>
-            <p>You know you want to</p>
+        <div class="description-section">
+            <p class="description-hook">This is not a real online service! Welcome to Java House, At Java House, we serve more than just coffee, we craft an experience. Sourced from the world’s best coffee regions and roasted to perfection, our premium beans create rich, bold flavors in every cup. Whether it’s a smooth espresso or a velvety latte. Come for the coffee, stay for the experience. </p>
+            <p class="header-hook">You <em>know</em> you want to.</p>
         </div>
-        <form action="#" method="" class="form-container">
+        <form action="#" method="post" class="form">
+            <div class="form-container">
+                <p class="form-title">Sign-up</p>
+                
+                <div class="input">
+                    <label for="first-name">*First Name</label>
+                    <input type="text" name="first-name" id="first-name" placeholder="John" required>
+                </div>
 
+                <div class="input">
+                    <label for="last-name">Last Name</label>
+                    <input type="text" name="last-name" id="last-name" placeholder="Doe">
+                </div>
+
+                <div class="input">
+                    <label for="email">*Email</label>
+                    <input type="email" name="email" id="email" placeholder="name@example.com" required>
+                    <span class="error-message">Please enter a valid email</span> 
+                </div>
+
+                <div class="input">
+                    <label for="phone-number">Phone Number:</label>
+                    <input type="tel" name="phone-number" id="phone-number" placeholder="(Optional)" pattern="\(\d{3}\)\s\d{3}-\d{4}">
+                    <span class="error-message">Follow this format: (555) 123-4567</span>
+                </div>
+
+                <div class="input">
+                    <label for="password">*Password</label>
+                    <input type="password" name="password" id="password" minlength="6" placeholder="Must have at least 6 characters, no spaces" pattern="[^\s]{6,}" required>
+                    <span class="error-message">Password must be atleast 6 characters, no spaces</span>
+                </div>
+                <div class="input">
+                    <label for="confirm-password">*Confirm Password</label>
+                    <input type="password" name="confirm-password" id="confirm-password" minlength="6" placeholder="Confirm password" pattern="[^\s]{6,}" required>
+                    <span class="error-message">Passwords must match</span>
+                </div>
+            </div>
+            <div class="submit">
+                <button type="submit">Create Account</button>
+            </div>
         </form>
-        <div class="button-section">
-            <button></button>
-            <div class="sign-up"></div>
+        <div class="log-in"><p>Already have an account?</p><a href="#">Log in</a></div>
         </div>
       </div>
     </div>
+
+<script>
+    const password = document.getElementById('password');
+    const confirmPassword = document.getElementById('confirm-password');
+    
+    function validatePasswordMatch() {
+        if (password.value !== confirmPassword.value) {
+            confirmPassword.setCustomValidity("Passwords don't match");
+        } else {
+            confirmPassword.setCustomValidity(''); // Valid
+        }
+    }
+    
+    password.addEventListener('input', validatePasswordMatch);
+    confirmPassword.addEventListener('input', validatePasswordMatch);
+</script>
+
 </body>
 </html>
