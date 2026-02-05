@@ -92,6 +92,7 @@ input {
     height: 100%;
     object-fit: cover;
     object-position: center;
+    position: absolute;
     display: block;
 }
 
@@ -121,11 +122,11 @@ h1 {
 }
 
 .left {
-    height: 100vh;
+    height: auto;
     width: 45vw;
     position: relative;
     overflow: hidden;
-    min-height: 200px;
+    min-height: 100vh;
 }
 
 .right {
@@ -171,6 +172,21 @@ a:hover {
 
 .banner > .logo-header {
     margin-right: 3vw;
+}
+
+@media (min-width: 769px) {
+    .container {
+        max-height: 100vh;
+        overflow: hidden;
+    }
+    
+    .right {
+        overflow-y: auto;
+    }
+    
+    .left {
+        height: 100%;
+    }
 }
 
 @media (max-width: 768px) {
