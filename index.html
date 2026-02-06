@@ -40,14 +40,13 @@
 
                 <div class="input">
                     <label for="email">*Email</label>
-                    <input type="email" name="email" id="email" placeholder="name@example.com" required>
+                    <input type="email" name="email" id="email" placeholder="name@example.com" pattern="^[^@\s]+@[^@\s]+\.[^@\s]{2,}$" required>
                     <span class="error-message">Please enter a valid email</span> 
                 </div>
 
                 <div class="input">
                     <label for="phone-number">Phone Number:</label>
                     <input type="tel" name="phone-number" id="phone-number" placeholder="(Optional)" pattern="\(\d{3}\)\s\d{3}-\d{4}">
-                    <span class="error-message">Follow this format: (555) 123-4567</span>
                 </div>
 
                 <div class="input">
@@ -62,7 +61,7 @@
                 </div>
             </div>
             <div class="submit">
-                <button type="submit">Create Account</button>
+                <button type="submit"><span>Create Account</span></button>
             </div>
         </form>
         <div class="log-in"><p>Already have an account?</p><a href="#">Log in</a></div>
@@ -71,6 +70,8 @@
     </div>
 
 <script>
+
+//password confirmation
     const password = document.getElementById('password');
     const confirmPassword = document.getElementById('confirm-password');
     
@@ -84,6 +85,35 @@
     
     password.addEventListener('input', validatePasswordMatch);
     confirmPassword.addEventListener('input', validatePasswordMatch);
+//phone number formatting
+    const phoneInput = document.getElementById(`phone-number`)
+
+    phoneInput.addEventListener(`input`, function(number) {
+        let value = number.target.value.replace(/\D/g,``);
+
+        if (value.length > 10) {
+            value = value.slice(0, 10);
+        }
+
+        let formattedValue =``;
+
+        if (value.length > 0) {
+            formattedValue = `(` + value.substring(0, 3);
+        }
+
+        if (value.length >= 4){
+            formattedValue += `) ` + value.substring(3, 6);
+        }
+
+        if (value.length >= 6) {
+            formattedValue += `-` + value.substring(6, 10);
+        }
+
+        number.target.value = formattedValue;
+
+    });
+
+    
 </script>
 
 </body>
